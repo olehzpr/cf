@@ -1,3 +1,6 @@
+#ifndef UTILS_HPP
+#define UTILS_HPP
+
 #include <iterator>
 #include <sstream>
 #include <string>
@@ -36,3 +39,5 @@ namespace Utils {
     }
   }
 }
+
+#endif

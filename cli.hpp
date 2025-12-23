@@ -2,7 +2,8 @@
 
 enum BoolFlag {
   Help,
-  Print
+  Print,
+  NoIgnore
 };
 
 enum ValueFlag {
@@ -18,6 +19,7 @@ class CLI{
     // boolean flags
     bool help = false;
     bool print = false;
+    bool no_ignore = false;
     
     // value flags
     std::string directory = "";

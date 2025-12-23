@@ -1,5 +1,5 @@
 #include "cli.hpp"
-#include "utils.cpp"
+#include "utils.hpp"
 #include <iostream>
 
 std::string parseValueFlag(int& i, int argc, char**argv);
@@ -28,6 +28,11 @@ CLI::CLI(int argc, char** argv) {
       continue;
     }
 
+    if (value == "--no-ignore" || value == "-n") {
+      this->no_ignore = true;
+      continue;
+    }
+
     if (value == "--directory" || value == "-d") {
       this->directory = parseValueFlag(i, argc, argv);
       continue;
@@ -53,6 +58,10 @@ bool CLI::boolFlag(BoolFlag flag){
     return this->print;
   }
 
+  if (flag == NoIgnore) {
+    return this->no_ignore;
+  }
+
   return false;
 }
 
@@ -69,17 +78,16 @@ std::string CLI::valueFlag(ValueFlag flag){
 }
 
 std::string parseValueFlag(int &i, int argc, char **argv){
-  if (++i == argc) return "";
-  
-  std::string value = std::string(argv[i]);
+  if (++i >= argc) return "";
+
   std::vector<std::string> all_values;
 
-  while(!value.starts_with('-') && i < argc) {
-    all_values.push_back(value);
-    value = std::string(argv[++i]);
+  while(i < argc && !std::string(argv[i]).starts_with('-')) {
+    all_values.push_back(std::string(argv[i]));
+    ++i;
   }
 
-  i -= 2;
+  --i;
 
   return Utils::Join(all_values, ",");
 }
