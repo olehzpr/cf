@@ -30,3 +30,8 @@ add_executable(cf ${SOURCES})
 set_target_properties(cf PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
 )
+
+# Install rules
+install(TARGETS cf
+    RUNTIME DESTINATION bin
+)
