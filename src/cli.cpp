@@ -1,5 +1,5 @@
-#include "cli.hpp"
-#include "utils.hpp"
+#include "cf/cli.hpp"
+#include "cf/utils.hpp"
 #include <iostream>
 
 std::string parseValueFlag(int& i, int argc, char**argv);

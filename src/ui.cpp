@@ -1,4 +1,4 @@
-#include "ui.hpp"
+#include "cf/ui.hpp"
 
 void UI::help() {
   std::cout << "Usage: cf [directory] [options]" << std::endl;

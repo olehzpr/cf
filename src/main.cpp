@@ -1,10 +1,10 @@
 #include <iostream>
 #include <filesystem>
-#include "cli.hpp"
-#include "ui.hpp"
-#include "clipboard.hpp"
-#include "utils.hpp"
-#include "file_collector.hpp"
+#include "cf/cli.hpp"
+#include "cf/ui.hpp"
+#include "cf/clipboard.hpp"
+#include "cf/utils.hpp"
+#include "cf/file_collector.hpp"
 
 namespace fs = std::filesystem;
 
