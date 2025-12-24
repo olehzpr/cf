@@ -5,15 +5,25 @@ Easily copy all files from subdirectories
 ## Requirements
 
 - C++20 compatible compiler (GCC 10+, Clang 13+, or Apple Clang 13+)
-- CMake 3.15+ (recommended) or Make
+- CMake 3.15+
+- Make (optional, for simplified workflow)
 
 ## Building
 
-### Using CMake
+### Using Make (Recommended)
 
 ```bash
-# Configure the project
-cmake -S . -B build
+# Build in Release mode (optimized)
+make build
+
+# The binary will be at: build/cf
+```
+
+### Using CMake directly
+
+```bash
+# Configure the project in Release mode
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 
 # Build
 cmake --build build
@@ -26,19 +36,19 @@ cmake --build build
 ### System-wide installation (Unix/Linux/macOS)
 
 ```bash
-# After building with CMake
-sudo cmake --install build --prefix /usr/local
+# Using Make (builds in Release mode automatically)
+make install
 
-# Or manually copy the binary
-sudo cp build/cf /usr/local/bin/
+# Or using CMake directly
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+sudo cmake --install build --prefix /usr/local
 ```
 
 ### Local user installation
 
 ```bash
-# Copy to your local bin directory
-mkdir -p ~/.local/bin
-cp build/cf ~/.local/bin/
+# Using Make (builds in Release mode automatically)
+make install-user
 
 # Make sure ~/.local/bin is in your PATH
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc  # or ~/.zshrc
